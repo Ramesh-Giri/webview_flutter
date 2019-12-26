@@ -53,7 +53,6 @@ if (appContext instanceof FlutterApplication) {
 }
 
 webView = new WebView(activityContext);
-webView = new WebView(activityContext);
     displayListenerProxy.onPostWebViewInitialization(displayManager);
 
     platformThreadHandler = new Handler(context.getMainLooper());
