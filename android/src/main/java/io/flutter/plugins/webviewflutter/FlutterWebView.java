@@ -42,6 +42,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     DisplayManager displayManager =
         (DisplayManager) context.getSystemService(Context.DISPLAY_SERVICE);
     displayListenerProxy.onPreWebViewInitialization(displayManager);
+    
      Context activityContext = context;
 Context appContext = context.getApplicationContext();
 if (appContext instanceof FlutterApplication) {
@@ -50,6 +51,8 @@ if (appContext instanceof FlutterApplication) {
         activityContext = currentActivity;
     }
 }
+
+webView = new WebView(activityContext);
 webView = new WebView(activityContext);
     displayListenerProxy.onPostWebViewInitialization(displayManager);
 
