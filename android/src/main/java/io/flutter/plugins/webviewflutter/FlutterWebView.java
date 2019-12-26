@@ -42,7 +42,13 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     DisplayManager displayManager =
         (DisplayManager) context.getSystemService(Context.DISPLAY_SERVICE);
     displayListenerProxy.onPreWebViewInitialization(displayManager);
-    webView = new InputAwareWebView(context, containerView);
+     Context activityContext = context;
+    Context appContext = context.getApplicationContext();
+    
+    if (appContext != null) {
+      activityContext = appContext;
+    }
+    webView = new InputAwareWebView(activityContext, containerView);    
     displayListenerProxy.onPostWebViewInitialization(displayManager);
 
     platformThreadHandler = new Handler(context.getMainLooper());
